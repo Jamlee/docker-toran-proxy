@@ -1,0 +1,90 @@
+home:
+    pattern:  /
+    defaults: { _controller: ToranProxyBundle:Home:index, _format: html }
+
+setup:
+    pattern:  /setup
+    defaults: { _controller: ToranProxyBundle:Home:setup, _format: html }
+
+docs:
+    pattern:  /docs/{page}
+    defaults: { _controller: ToranProxyBundle:Home:docs, _format: html }
+
+post_install:
+    pattern:  /post-install
+    defaults: { _controller: ToranProxyBundle:Home:postInstall, _format: html }
+
+settings:
+    pattern:  /settings
+    defaults: { _controller: ToranProxyBundle:Home:settings, _format: html }
+
+toran_proxy_repo_index:
+    pattern:  /repositories/
+    defaults: { _controller: ToranProxyBundle:Repo:index, _format: html }
+    methods: GET
+
+toran_proxy_repo_create:
+    pattern:  /repositories/add
+    defaults: { _controller: ToranProxyBundle:Repo:create, _format: html }
+    methods: GET|POST
+
+toran_proxy_repo_edit:
+    pattern:  /repositories/{id}-{digest}
+    defaults: { _controller: ToranProxyBundle:Repo:edit, _format: html }
+    methods: GET|POST
+
+toran_proxy_repo_delete:
+    pattern:  /repositories/{id}-{digest}
+    defaults: { _controller: ToranProxyBundle:Repo:delete, _format: html }
+    methods: DELETE
+
+toran_proxy_packagist_index:
+    pattern:  /packagist/
+    defaults: { _controller: ToranProxyBundle:Packagist:index, _format: html }
+    methods: GET
+
+toran_proxy_packagist_add:
+    pattern:  /packagist/add
+    defaults: { _controller: ToranProxyBundle:Packagist:add, _format: html }
+    methods: GET|POST
+
+toran_proxy_packagist_delete:
+    pattern:  /packagist/{package}
+    defaults: { _controller: ToranProxyBundle:Packagist:delete, _format: html }
+    methods: DELETE
+    requirements:
+        package: '[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+'
+
+toran_proxy_providers:
+    pattern:  /repo/{repo}/p/{filename}
+    defaults: { _controller: ToranProxyBundle:Proxy:provider, _format: json }
+    requirements:
+        filename: .+
+
+toran_proxy_base:
+    pattern:  /repo/{repo}/
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: toran_proxy_root }
+
+toran_proxy_root:
+    pattern:  /repo/{repo}/packages.json
+    defaults: { _controller: ToranProxyBundle:Proxy:root, _format: json }
+
+toran_proxy_dists:
+    pattern:  /repo/{repo}/dists/{name}/{version}/{ref}.{type}
+    defaults: { _controller: ToranProxyBundle:Proxy:dist }
+    requirements:
+        name: '[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+'
+        ref: '[a-f0-9]*?'
+        type: zip|tar
+
+generic_hook:
+    pattern: /update-package
+    defaults: { _controller: ToranProxyBundle:Repo:hook, _format: json }
+
+github_hook:
+    pattern: /api/github
+    defaults: { _controller: ToranProxyBundle:Repo:hook, _format: json }
+
+bitbucket_hook:
+    pattern: /api/bitbucket
+    defaults: { _controller: ToranProxyBundle:Repo:hook, _format: json }

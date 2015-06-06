@@ -1,0 +1,355 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    line-height: 160%;
+}
+.content-area {
+    padding: 10px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+header {
+    background: #499a68;
+    color: #fff;
+    border-bottom: 5px solid #297546;
+    position: relative;
+}
+header h1 {
+    margin: 20px 0 35px;
+    position: relative;
+    font-weight: 600;
+    font-size: 50px;
+}
+header h1 a {
+    position: relative;
+    padding-left: 80px;
+}
+header h1:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -32px;
+    width: 46px;
+    height: 46px;
+    border-radius: 200px;
+    border: 11px solid #297546;
+}
+header .content-area {
+    padding-bottom: 0;
+}
+
+nav {
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+nav a {
+    line-height: 25px;
+    height: 37px;
+    font-size: 14px;
+    display: inline-block;
+    padding: 7px 12px 0;
+    text-decoration: none;
+    margin: 0;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+nav a.active {
+    background: #297546;
+}
+nav a:hover {
+    background: #308b52;
+}
+
+footer {
+    background: #499a68;
+    border-top: 5px solid #297546;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+footer, footer a, footer a:hover, footer a:link, footer a:visited, footer a:active,
+nav, nav a, nav a:hover, nav a:link, nav a:visited, nav a:active {
+    color: #fff;
+}
+
+label {
+    margin: 10px 0;
+    display: block;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 500;
+}
+h2 {
+    font-size: 18px;
+}
+h3 {
+    font-size: 16px;
+}
+
+a, a:visited, a:active, a:hover, a:link {
+    color: #11c556;
+}
+h1 a, h1 a:visited, h1 a:active, h1 a:hover, h1 a:link {
+    text-decoration: none;
+    color: #fff;
+}
+
+hr {
+    border-top: 2px solid #297546;
+    margin-bottom: 0;
+}
+
+input[type=text], textarea {
+    border: 2px solid #297546;
+    border-radius: 3px;
+    padding: 6px;
+}
+
+.input-checkbox-container input {
+    margin-right: 5px;
+}
+.input-checkbox-container label {
+    display: inline;
+}
+.input-radio-container input {
+    float: left;
+    clear: left;
+    margin-right: 5px;
+}
+.input-radio-container label {
+    line-height: 18px;
+}
+
+input[type=text] {
+    width: 50%;
+}
+
+textarea {
+    width: 50%;
+    height: 200px;
+    resize: vertical;
+}
+strong {
+    font-weight: 600;
+}
+.fieldset {
+    padding-left: 30px;
+}
+.packages, .repositories {
+    list-style: none;
+    padding: 0;
+}
+.packages .name, .packages .opts, .repositories .opts, .repositories .config {
+    display: inline-block;
+    vertical-align: bottom;
+    margin: 0 10px 10px 0;
+}
+.repositories .opts a, .repositories .opts form {
+    margin-right: 10px;
+}
+.packages .name {
+    width: 300px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.repositories .config {
+    margin-top: 0;
+    width: 80%;
+}
+.repositories .opts {
+    vertical-align: top;
+}
+
+.opts form {
+    display: inline;
+}
+.opts .button {
+    margin-top: 0;
+}
+
+input[type=submit], button, .button {
+    background: #297546;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: none;
+    margin: 0;
+}
+form button, form input[type=submit] {
+    margin-top: 20px;
+}
+.button, .button:visited, .button:hover, .button:link, .button:active {
+    color: #fff;
+    text-decoration: none;
+}
+.button-delete {
+    background: #D62944;
+}
+
+.form-errors {
+    list-style: none;
+    color: #f00;
+    padding: 5px;
+    border-radius: 3px;
+    background: #fcc;
+}
+.form-errors pre {
+    background: none;
+    border: none;
+}
+
+#form_license {
+    max-width: 700px;
+    height: 120px;
+    font-size: .7em;
+}
+
+pre {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px;
+    background: #f1f1f1;
+    line-height: 120%;
+}
+
+blockquote {
+    margin: 20px 0;
+    background: #efe;
+    padding: 10px;
+    color: #555;
+    border-radius: 4px;
+}
+blockquote .title {
+    color: #585;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.content-area.flash-messages {
+    padding: 0;
+}
+.flash-message {
+    border: 1px solid #ccc;
+    background: #f1f1f1;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 5px;
+}
+.flash-message p {
+    margin: 0;
+}
+.flash-message.warning {
+    border-color: #f9ee9f;
+    background-color: #fbf3bd;
+}
+.flash-message.error {
+    border-color: #fab4b4;
+    background-color: #fdd9d9;
+}
+.flash-message.success {
+    border-color: #bdfbb7;
+    background-color: #ddfdd9;
+}
+
+.secondary-nav {
+    padding-left: 0;
+    margin: 10px 0;
+}
+.secondary-nav li {
+    display: inline-block;
+    margin-right: 20px;
+    font-weight: 600;
+    font-size: 18px;
+}
+.secondary-nav a {
+    text-decoration: none;
+    color: #000;
+}
+.secondary-nav a.active {
+    text-decoration: underline;
+    color: #11c556;
+}
+
+.update-hint {
+    color: #fdffb3 !important;
+}
+
+.docs-hint {
+    font-size: 12px;
+}
+.docs-hint a {
+    text-decoration: none;
+    opacity: 0.8;
+    background: url(img/help.png) no-repeat;
+    color: #fff;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    top: -10px;
+    left: 3px;
+    position: relative;
+}
+.docs-hint a:hover {
+    opacity: 1;
+}
+.docs p, .docs pre {
+    margin-left: 30px;
+}
+.faq-entry p, .faq-entry pre {
+    margin-left: 0;
+}
+.faq-entry {
+    padding-left: 30px;
+}
+.faq-entry h2 {
+    margin-left: -30px;
+}
+
+.license-hint {
+    width: 150px;
+    height: 150px;
+    background: url(img/license.png) no-repeat;
+    background-size: 150px 150px;
+    display: block;
+    position: absolute;
+    right: 50px;
+    bottom: -40px;
+    -webkit-transform: rotate(14deg);
+       -moz-transform: rotate(14deg);
+        -ms-transform: rotate(14deg);
+         -o-transform: rotate(14deg);
+            transform: rotate(14deg);
+    -webkit-transform-origin: 50% 50%;
+       -moz-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+         -o-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+}
+
+:not(pre) > code {
+    border: 1px solid #ccc;
+    background: #f1f1f1;
+    border-radius: 2px;
+    white-space: nowrap;
+    padding: 0 2px;
+}
+
+@media only screen and (max-width : 700px) {
+    input[type=text], textarea {
+        width: 100%;
+    }
+
+    button[type="submit"] {
+        margin-top: 10px;
+    }
+}

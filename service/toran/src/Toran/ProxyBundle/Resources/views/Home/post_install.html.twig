@@ -1,0 +1,19 @@
+{% extends '::layout.html.twig' %}
+
+{% block nav_menu %}
+{% endblock %}
+
+{% block content %}
+    <section class="install-page">
+        <h2>Bootstrapping</h2>
+        <p>Toran Proxy is now set-up! To complete the setup you need to run the background update task once manually and then set-up a cron job.</p>
+
+        <p>Note that all the instructions below should be executed as the php web user (www-data or equivalent) to avoid permission issues later on.</p>
+
+        <p>The background tasks are centralized and automatically managed by the <code>bin/cron</code> php script. Run it once in verbose mode as <code>php bin/cron -v</code> to make sure everything works fine and so it can ask you for credentials should they be needed.</p>
+
+        <p>Once the first run is complete, you should add a cron job running every minute or so that executes <code>cd {{ base_path }} &amp;&amp; php bin/cron</code> - this will take care of keeping your packages up to date at all times.</p>
+
+        <p>You are now done with setup and can proceed to the <a href="{{ path('home') }}">usage instructions</a>.</p>
+    </section>
+{% endblock %}

@@ -1,0 +1,17 @@
+toran:
+  image: cedvan/toran-proxy:1.1.6-2
+  ports:
+   - "8002:8002"
+  volumes:
+   - "./data:/data/toran-proxy"
+   - "./service/toran-proxy:/bin/toran-proxy"
+   - "./service/toran-proxy-http.conf:/etc/nginx/sites-available/toran-proxy-http.conf"
+   - "./service/ssh:/data/toran-proxy/ssh"
+   - "./service/toran:/var/www"
+  mem_limit: 512m
+  dns:
+    - "114.114.114.114"
+    - "8.8.8.8"
+    - "180.76.76.76"
+    - "223.5.5.5"
+    - "223.6.6.6"

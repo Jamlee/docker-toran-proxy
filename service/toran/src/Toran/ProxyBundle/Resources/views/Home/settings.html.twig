@@ -1,0 +1,43 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <section class="install-page">
+        <h2>Settings</h2>
+
+        <form class="install-form" action="" method="POST">
+            {{ form_errors(form) }}
+
+            <h3>Packagist Proxy</h3>
+            <div class="fieldset">
+                {{ form_row(form.packagist_sync) }}
+            </div>
+
+            <h3>Archive Settings</h3>
+            <div class="fieldset">
+                {{ form_row(form.dist_sync_mode) }}
+            </div>
+
+            <h3>Git Settings (optional, enables git mirroring capability)</h3>
+            <div class="fieldset">
+                {{ form_row(form.git_path) }}
+                {{ form_row(form.git_prefix) }}
+            </div>
+
+            <h3>License</h3>
+            <div class="fieldset">
+                {{ form_errors(form.license) }}
+                {{ form_widget(form.license) }}
+                {{ form_row(form.license_personal) }}
+            </div>
+
+            <h3>Satis Migration (optional)</h3>
+            <div class="fieldset">
+                <p>Paste your existing Satis configuration here if you have one and wish to migrate your private repositories.</p>
+                <p>Please remove any public repositories that are available on Packagist, this will be taken care of by the Packagist options above.</p>
+                {{ form_widget(form.satis_conf) }}
+
+                {{ form_rest(form) }}
+            </div>
+        </form>
+    </section>
+{% endblock %}

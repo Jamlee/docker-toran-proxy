@@ -1,0 +1,47 @@
+{% extends '::layout.html.twig' %}
+
+{% block nav_menu %}
+{% endblock %}
+
+{% block content %}
+    <section class="install-page">
+        <h2>Installation</h2>
+        <p>Welcome to Toran Proxy. This is a friendly reminder that this is proprietary software whose goal is to support the open-source development of Composer and finance the hosting of packagist.org. If you did not <a href="http://toranproxy.com">buy a license</a>, I can not technically stop you from using the software, but it would be a lot nicer if you did.</p>
+
+        {{ form_start(form, {attr: {class: "install-form"}}) }}
+            {{ form_errors(form) }}
+
+            <h3>License</h3>
+            <div class="fieldset">
+                {{ form_errors(form.license) }}
+                {{ form_widget(form.license) }}
+                {{ form_row(form.license_personal) }}
+            </div>
+
+            <h3>Packagist Proxy</h3>
+            <div class="fieldset">
+                {{ form_row(form.packagist_sync) }}
+            </div>
+
+            <h3>Archive Settings</h3>
+            <div class="fieldset">
+                {{ form_row(form.dist_sync_mode) }}
+            </div>
+
+            <h3>Git Settings (optional)</h3>
+            <div class="fieldset">
+                {{ form_row(form.git_path) }}
+                {{ form_row(form.git_prefix) }}
+            </div>
+
+            <h3>Satis Migration (optional)</h3>
+            <div class="fieldset">
+                <p>Paste your existing Satis configuration here if you have one and wish to migrate your private repositories.</p>
+                <p>Please remove any public repositories that are available on Packagist, this will be taken care of by the Packagist options above.</p>
+                {{ form_widget(form.satis_conf) }}
+
+                {{ form_rest(form) }}
+            </div>
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

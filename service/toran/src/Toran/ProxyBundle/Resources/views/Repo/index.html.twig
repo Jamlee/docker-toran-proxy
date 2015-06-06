@@ -1,0 +1,26 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <h2>
+        Private Repositories
+        <span class="docs-hint"><a href="{{ path('docs', {page: 'usage.md'}) }}#private"></a></span>
+    </h2>
+    <ul class="repositories">
+    {% for repo in repos %}
+        <li>
+            {% spaceless %}
+            <pre class="config">{{ repo.config|yaml_encode(1) }}</pre>
+            <span class="opts">
+                <a class="button" href="{{ path('toran_proxy_repo_edit', {id: repo.id, digest: repo.digest}) }}">edit</a>
+                <form action="{{ path('toran_proxy_repo_delete', {id: repo.id, digest: repo.digest}) }}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="button button-delete js-confirm" type="submit">delete</button>
+                </form>
+            </span>
+            {% endspaceless %}
+        </li>
+    {% endfor %}
+    </ul>
+
+    <a class="button" href="{{ path('toran_proxy_repo_create') }}">Add Repository</a>
+{% endblock %}

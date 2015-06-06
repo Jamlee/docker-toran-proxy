@@ -1,0 +1,2 @@
+#!/bin/bash
+docker exec -ti toran_toran_1 /bin/bash

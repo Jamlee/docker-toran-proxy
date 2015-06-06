@@ -1,0 +1,45 @@
+parameters:
+    toran_config_file: "%kernel.root_dir%/config/toran.yml"
+
+services:
+    config:
+        class: Toran\ProxyBundle\Service\Configuration
+        arguments: [%toran_config_file%]
+
+    toran_util:
+        class: Toran\ProxyBundle\Service\Util
+        arguments: [%kernel.root_dir%, %kernel.cache_dir%, @config]
+
+    toran_bootstrap:
+        class: Toran\ProxyBundle\EventListener\Bootstrap
+        arguments: [@toran_util, %composer_home%, %composer_cache_dir%, %kernel.cache_dir%, @twig, %toran_version%]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 1000 }
+
+    dist_syncer:
+        class: Toran\ProxyBundle\Service\DistSyncer
+        arguments:
+            - @router
+
+    source_syncer:
+        class: Toran\ProxyBundle\Service\SourceSyncer
+        arguments:
+            - @config
+
+    repo_syncer:
+        class: Toran\ProxyBundle\Service\RepoSyncer
+        arguments:
+            - @router
+            - @config
+            - @dist_syncer
+            - @source_syncer
+            - %toran_web_dir%
+
+    proxy_factory:
+        class: Toran\ProxyBundle\Service\ProxyFactory
+        arguments:
+            - @router
+            - @config
+            - @source_syncer
+            - %toran_web_dir%
+            - %toran_cache_dir%

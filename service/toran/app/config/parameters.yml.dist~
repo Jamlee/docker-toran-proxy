@@ -1,0 +1,16 @@
+parameters:
+    # this secret should be changed to something unique and random if possible
+    secret:         ThisTokenIsNotSoSecret-Change-It
+
+    # http or https depending on your hosting setup
+    toran_scheme:   http
+
+    # in case you use non-standard ports you can update them here
+    toran_http_port: 8002
+    toran_https_port: 443
+
+    # the hostname toran is hosted at
+    toran_host: 192.168.1.12
+
+    # e.g. /foo if toran is hosted in a sub-directory, or leave it empty if it is on its own domain, no trailing slash!
+    toran_base_url:

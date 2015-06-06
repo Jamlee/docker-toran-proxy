@@ -1,0 +1,4 @@
+toran_proxy:
+    resource: "@ToranProxyBundle/Resources/config/routing.yml"
+    prefix:   /
+

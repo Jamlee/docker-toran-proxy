@@ -1,0 +1,41 @@
+imports:
+    - { resource: defaults.yml }
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+framework:
+    #esi:             ~
+    #translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+        http_port: %toran_http_port%
+        https_port: %toran_https_port%
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "en"
+    trusted_proxies: ~
+    session:         ~
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+    globals:
+        toran_version: %toran_version%
+    form:
+        resources:
+            - ToranProxyBundle::form_layout.html.twig
+
+parameters:
+    router.request_context.host: %toran_host%
+    router.request_context.scheme: %toran_scheme%
+    router.request_context.base_url: %toran_base_url%
+    toran_version: 1.1.7

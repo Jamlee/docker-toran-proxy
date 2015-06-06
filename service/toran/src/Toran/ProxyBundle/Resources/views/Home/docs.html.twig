@@ -1,0 +1,14 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <ul class="secondary-nav">
+        <li><a {% if doc_page == 'bootstrap.md' %}class="active" {% endif %}href="{{ path('docs', {page: 'bootstrap.md'}) }}">Bootstrapping</a></li>
+        <li><a {% if doc_page == 'usage.md' %}class="active" {% endif %}href="{{ path('docs', {page: 'usage.md'}) }}">Using Toran Proxy</a></li>
+        <li><a {% if doc_page == 'faq' %}class="active" {% endif %}href="{{ path('docs', {page: 'faq'}) }}">FAQ</a></li>
+    </ul>
+    <div class="docs">
+        {% block doc_content %}
+            {{ content|raw }}
+        {% endblock %}
+    </div>
+{% endblock %}

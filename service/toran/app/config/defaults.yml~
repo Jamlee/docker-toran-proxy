@@ -1,0 +1,11 @@
+# These defaults can be overridden in parameters.yml
+parameters:
+    toran_config_file: %kernel.root_dir%/toran/config.yml
+    toran_cache_dir: %kernel.root_dir%/toran/cache
+    toran_scheme: http
+    toran_web_dir: %kernel.root_dir%/../web
+    toran_http_port: 80
+    toran_https_port: 443
+
+    composer_home: %kernel.root_dir%/toran/composer
+    composer_cache_dir: %kernel.root_dir%/toran/composer/cache

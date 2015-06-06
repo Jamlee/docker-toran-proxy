@@ -1,0 +1,35 @@
+{% block form_row %}
+{% spaceless %}
+    {% if 'checkbox' in form.vars.block_prefixes %}
+        <div class="input-checkbox-container">
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            {{ form_label(form) }}
+        </div>
+    {% elseif 'choice' in form.vars.block_prefixes and form.vars.expanded|default(false) == true %}
+        <div class="input-radio-container">
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+        </div>
+    {% else %}
+        <div>
+            {{ form_label(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+    <ul class="form-errors">
+        {% for error in errors %}
+            <li>{{ error.message|raw }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}

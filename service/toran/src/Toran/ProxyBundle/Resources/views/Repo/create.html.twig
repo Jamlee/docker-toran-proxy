@@ -1,0 +1,43 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <h2>Private Repositories - {% block page_subtitle %}Add{% endblock %}</h2>
+    {{ form_start(form) }}
+
+    <div class="js-form-type">
+        {{ form_label(form.type) }}
+        {{ form_errors(form.type) }}
+        {{ form_widget(form.type) }}
+    </div>
+
+    <div class="js-form-url">
+        {{ form_label(form.url) }}
+        {{ form_errors(form.url) }}
+        {{ form_widget(form.url) }}
+    </div>
+
+    <div class="js-form-package">
+        {{ form_label(form.package) }}
+        {{ form_widget(form.package) }}
+        {{ form_errors(form.package) }}
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block post_js %}
+    (function() {
+        function updateFieldsVisibility() {
+            if ($('.js-form-type select').val() == 'package') {
+                $('.js-form-package').show();
+                $('.js-form-url').hide();
+            } else {
+                $('.js-form-package').hide();
+                $('.js-form-url').show();
+            }
+        }
+
+        updateFieldsVisibility();
+        $('.js-form-type').on('change', updateFieldsVisibility);
+    }());
+{% endblock %}

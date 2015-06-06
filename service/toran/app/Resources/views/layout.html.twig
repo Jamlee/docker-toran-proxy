@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Toran Proxy{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,500,600" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/normalize.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    </head>
+    <body>
+        {% block nav %}
+            <header>
+                <div class="content-area">
+                    {% if toran_product == 'personal' %}
+                        <a class="license-hint" href="https://toranproxy.com"></a>
+                    {% endif %}
+                    <h1><a href="{{ path('home') }}">Toran Proxy</a></h1>
+
+                    {% block nav_menu %}
+                    <nav>
+                        <a {% if page|default('') == 'home' %}class="active"{% endif %} href="{{ path('home') }}">Home</a>
+                        <a {% if page|default('') == 'private' %}class="active"{% endif %} href="{{ path('toran_proxy_repo_index') }}">Private Repositories</a>
+                        <a {% if page|default('') == 'packagist' %}class="active"{% endif %} href="{{ path('toran_proxy_packagist_index') }}">Packagist Proxy</a>
+                        <a {% if page|default('') == 'settings' %}class="active"{% endif %} href="{{ path('settings') }}">Settings</a>
+                        <a {% if page|default('') == 'docs' %}class="active"{% endif %} href="{{ path('docs', {page: 'bootstrap.md'}) }}">Documentation</a>
+                    </nav>
+                    {% endblock %}
+                </div>
+            </header>
+
+            {% spaceless %}
+            <div class="content-area flash-messages">
+            {% for type, flashMessages in app.session.flashbag.all() %}
+                {% for flashMessage in flashMessages %}
+                    <div class="flash-message {{ type }}">
+                        <p>{{ flashMessage }}</p>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+            {% endspaceless %}
+        {% endblock %}
+
+        <div class="content-area">
+            {% block content %}{% endblock %}
+        </div>
+
+        {% block footer %}
+            <footer>
+                <div class="content-area">
+                    <a href="https://toranproxy.com">Toran Proxy</a> v{{ toran_version }} {% if toran_version < latest_toran_version %}(<a href="{{ path('docs', {page: 'usage.md'}) }}#updates" class="update-hint">New version available!</a>) {% endif %}- <a href="mailto:toran@nelm.io">Feedback</a>
+                </div>
+            </footer>
+        {% endblock %}
+
+        <script src="{{ asset('js/jquery-2.1.0.min.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+        <script>{% block post_js %}{% endblock %}</script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <h2>Usage</h2>
+    <p>To use your Toran installation in Composer, there are two package repositories you can use.</p>
+    <p>The first is your repository of private packages, if you have any.</p>
+    <pre>
+{
+    "repositories": [
+        {"type": "composer", "url": "{{ url('toran_proxy_base', {repo: 'private'}) }}"}
+    ]
+}</pre>
+
+    <p>The second is the packagist.org proxy, if you use it you should disable packagist to avoid loading every package twice.</p>
+    <pre>
+{
+    "repositories": [
+        {"type": "composer", "url": "{{ url('toran_proxy_base', {repo: 'packagist'}) }}"},
+        {"packagist": false}
+    ]
+}</pre>
+
+    <p>Typically you will want to add both, and you should place your private repository on top so it has higher priority:</p>
+    <pre>
+{
+    "repositories": [
+        {"type": "composer", "url": "{{ url('toran_proxy_base', {repo: 'private'}) }}"},
+        {"type": "composer", "url": "{{ url('toran_proxy_base', {repo: 'packagist'}) }}"},
+        {"packagist": false}
+    ]
+}</pre>
+{% endblock %}

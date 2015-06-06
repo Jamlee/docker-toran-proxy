@@ -1,0 +1,28 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <h2>
+        Packagist Proxy
+        <span class="docs-hint"><a href="{{ path('docs', {page: 'usage.md'}) }}#packagist"></a></span>
+    </h2>
+    {% if not is_enabled %}
+        <p>Packagist proxying is disabled, you can <a href="{{ path('settings') }}">enable it in the settings</a></p>
+    {% else %}
+        <ul class="packages">
+        {% for package in packages %}
+            <li>
+                <span class="name">{{ package }}</span>
+                <span class="opts">
+                    <form action="{{ path('toran_proxy_packagist_delete', {package: package}) }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="button button-delete js-confirm" type="submit">delete</button>
+                    </form>
+                    &nbsp; <a href="https://packagist.org/packages/{{ package }}">view on packagist</a>
+                </span>
+            </li>
+        {% endfor %}
+        </ul>
+
+        <a class="button" href="{{ path('toran_proxy_packagist_add') }}">Add Package</a>
+    {% endif %}
+{% endblock %}
