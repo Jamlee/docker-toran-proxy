@@ -18,7 +18,7 @@ caching composer package by yourself .this project inspired by `docker image: ce
 
 note:
 
->  default configuration is 192.168.1.12:8002,so you just need to replace some it to yours.
+>  default configuration is 192.168.1.12:8002,so you just need to replace  it with yours.
 
 
 ##0x3:Starting
