@@ -10,9 +10,10 @@ caching composer package by yourself .this project inspired by `docker image: ce
 
 ##0x2:How to configure with docker
 
-**change ip and port **
+**change ip and port**
 
 >  modify file: ./service/toran/app/config/parameters.yml
+
 >  modify file: ./service/toran-proxy-http.conf #changing port
 
 note:
