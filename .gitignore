@@ -1,2 +1,2 @@
-data/*
-service/ssh/*
+/data/*
+/service/ssh/*
