@@ -23,7 +23,7 @@ note:
 
 **config git setting**
 
-![config](https://raw.githubusercontent.com/Jamlee/docker-toran-proxy/master/asset/config.gif)
+![config](https://raw.githubusercontent.com/Jamlee/docker-toran-proxy/master/asset/config.png)
 
 > you could see what i marked above,the path `/data/toran-proxy/mirrors` is inside container,the git clone url `jamlee@192.168.1.12:/home/jamlee/JAM/lab/toran/data/mirrors/` is on host.So every computer that can reach the host computer can use this private repository.
 
