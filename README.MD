@@ -30,7 +30,7 @@ note:
 
 ##0x3:Starting
 
-`docker-compser up` and open the url 192.168.1.12:8002
+`docker-compose up` and open the url 192.168.1.12:8002
 
 ##troubleshooting
 
