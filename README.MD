@@ -21,6 +21,11 @@ note:
 >  1. default configuration is 192.168.1.12:8002,so you just need to replace  it with yours.
 >  2. you also can modify the configuration by initial shell script . the path to script is `./service/toran-proxy`
 
+
+##0x3:Starting
+
+`docker-compose up` and open the url 192.168.1.12:8002
+
 **config git setting**
 
 ![config](https://raw.githubusercontent.com/Jamlee/docker-toran-proxy/master/asset/config.png)
@@ -28,13 +33,10 @@ note:
 > you could see what i marked above,the path `/data/toran-proxy/mirrors` is inside container,the git clone url `jamlee@192.168.1.12:/home/jamlee/JAM/lab/toran/data/mirrors/` is on host.So every computer that can reach the host computer can use this private repository.
 
 
-##0x3:Starting
-
-`docker-compose up` and open the url 192.168.1.12:8002
 
 ##troubleshooting
 
-
+...
 
 
 
